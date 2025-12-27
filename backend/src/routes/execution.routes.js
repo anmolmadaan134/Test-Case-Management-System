@@ -6,14 +6,6 @@ import rbac from "../middlewares/rbac.js";
 
 const router = Router();
 
-// router.get("/", auth, async (req, res) => {
-//   const result = await db.query(`
-//     SELECT te.*, tc.title
-//     FROM test_executions te
-//     JOIN test_cases tc ON tc.id = te.test_case_id
-//   `);
-//   res.json(result.rows);
-// });
 
 router.get("/", auth, async (req, res) => {
   const { projectId } = req.query;
@@ -42,7 +34,7 @@ router.post("/", auth, rbac(["admin","test-lead","tester"]), async (req, res) =>
     return res.status(400).json({ message: "projectId and test_case_id required" });
   }
 
-  // 🔐 Verify test case belongs to selected project
+  
   const tc = await db.query(
     "SELECT project_id FROM test_cases WHERE id = $1",
     [test_case_id]

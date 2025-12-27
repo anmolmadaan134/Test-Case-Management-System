@@ -36,7 +36,7 @@ export default function Projects() {
 
   return (
     <>
-      {/* Header */}
+      
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Projects</h1>
 
@@ -50,21 +50,21 @@ export default function Projects() {
         )}
       </div>
 
-      {/* Loading */}
+      
       {loading && (
         <div className="text-gray-500 bg-white p-6 rounded shadow">
           Loading projects...
         </div>
       )}
 
-      {/* Empty State */}
+      
       {!loading && projects.length === 0 && (
         <div className="bg-white p-6 rounded shadow text-gray-500">
           No projects yet. Create your first project to start testing.
         </div>
       )}
 
-      {/* Project Grid */}
+      
       {!loading && projects.length > 0 && (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {projects.map((project) => (
@@ -94,7 +94,7 @@ export default function Projects() {
         </div>
       )}
 
-      {/* Modal */}
+      
       {showModal && (
         <CreateProjectModal
           onClose={() => setShowModal(false)}

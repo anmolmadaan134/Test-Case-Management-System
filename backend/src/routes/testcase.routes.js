@@ -6,10 +6,7 @@ import {Parser} from "json2csv"
 
 const router = Router();
 
-// router.get("/", auth, async (req, res) => {
-//   const result = await db.query("SELECT * FROM test_cases");
-//   res.json(result.rows);
-// });
+
 
 router.get("/export", auth, async (req, res) => {
   try {
@@ -19,7 +16,7 @@ router.get("/export", auth, async (req, res) => {
       return res.status(400).json({ message: "projectId is required" });
     }
 
-    // Fetch project-specific test cases
+    // Fetching project-specific test cases
     const result = await db.query(
       `
       SELECT 

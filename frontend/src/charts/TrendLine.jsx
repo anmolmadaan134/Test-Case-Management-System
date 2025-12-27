@@ -17,9 +17,6 @@ export default function TrendLine() {
   const {currentProjectId:projectId} = useProject()
 
 
-  // 🔑 Project context
-  //const projectId = localStorage.getItem("currentProjectId");
-
   useEffect(() => {
     if (!projectId) return;
 
@@ -37,7 +34,7 @@ export default function TrendLine() {
     };
 
     fetchTrend();
-  }, [projectId]); // 👈 reacts to project change
+  }, [projectId]); 
 
   if (!projectId) {
     return (

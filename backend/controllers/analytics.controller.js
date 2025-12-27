@@ -23,50 +23,6 @@ export const executionSummary = async (req, res) => {
   res.json(result.rows);
 };
 
-// export const executionTrend = async (req, res) => {
-//   const { projectId } = req.query;
-//   if (!projectId || projectId === "null") {
-//   return res.status(400).json([]);
-// }
-
-//   const result = await db.query(
-//     `
-//     SELECT TO_CHAR(executed_at, 'YYYY-MM-DD') AS date, COUNT(*)::int AS count
-//     FROM test_executions te
-//     JOIN test_cases tc ON tc.id = te.test_case_id
-//     WHERE tc.project_id = $1
-//     GROUP BY DATE(executed_at)
-//     ORDER BY date
-//     `,
-//     [projectId]
-//   );
-
-//   res.json(result.rows);
-// };
-
-// export const executionTrend = async (req, res) => {
-//   const { projectId } = req.query;
-
-//   if (!projectId || projectId === "null" || projectId === "undefined") {
-//     return res.status(400).json([]);
-//   }
-
-//   const result = await db.query(
-//     `
-//     SELECT 
-//       TO_CHAR(te.executed_at, 'YYYY-MM-DD') AS date,
-//       COUNT(*)::int AS count
-//     FROM test_executions te
-//     JOIN test_cases tc ON tc.id = te.test_case_id
-//     WHERE tc.project_id = $1
-//     GROUP BY date(te.executed_at)
-//     ORDER BY date
-//     `,
-//     [Number(projectId)]
-//   );
-
-//   res.json(result.rows);
-// };
 
 export const executionTrend = async (req, res) => {
   const { projectId } = req.query;

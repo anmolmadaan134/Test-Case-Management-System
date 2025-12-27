@@ -15,14 +15,14 @@ export default function Navbar() {
   return (
     <nav className="h-16 bg-white border-b shadow-sm px-6 flex items-center justify-between">
       
-      {/* Left: Brand + Links */}
+      
       <div className="flex items-center gap-10">
-        {/* Brand */}
+        
         <div className="text-xl font-bold text-blue-600">
           TCMS
         </div>
 
-        {/* Navigation */}
+        
         <div className="flex gap-6 text-sm">
           <Link className={isActive("/dashboard")} to="/dashboard">
             Dashboard
@@ -46,7 +46,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Right: User + Logout */}
+      
       <div className="flex items-center gap-4">
         <span className="text-sm text-gray-500 capitalize">
           {user.role.replace("-", " ")}

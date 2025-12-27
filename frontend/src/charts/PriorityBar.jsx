@@ -14,8 +14,7 @@ export default function PriorityBar() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔑 Project context
-  // const projectId = localStorage.getItem("currentProjectId");
+  
 
   const {currentProjectId:projectId} = useProject()
 
@@ -36,7 +35,7 @@ export default function PriorityBar() {
     };
 
     fetchPriorityStats();
-  }, [projectId]); // 👈 reloads on project switch
+  }, [projectId]); 
 
   if (!projectId) {
     return (
