@@ -24,7 +24,7 @@ export default function PriorityBar() {
     const fetchPriorityStats = async () => {
       try {
         const res = await api.get(
-          `/analytics/priority?projectId=${projectId}`
+          `/api/analytics/priority?projectId=${projectId}`
         );
         setData(res.data);
       } catch (err) {

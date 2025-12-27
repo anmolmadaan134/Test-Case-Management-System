@@ -10,7 +10,7 @@ export default function DashboardStats() {
     if (!currentProjectId) return;
 
     api
-      .get(`/analytics/dashboard?projectId=${currentProjectId}`)
+      .get(`/api/analytics/dashboard?projectId=${currentProjectId}`)
       .then(res => setStats(res.data))
       .catch(() => setStats(null));
   }, [currentProjectId]);

@@ -12,7 +12,7 @@ export default function TestCases() {
   const [showModal, setShowModal] = useState(false);
 
   const fetchTestCases = useCallback(async () => {
-    const res = await api.get(`/testcases?projectId=${projectId}`);
+    const res = await api.get(`/api/testcases?projectId=${projectId}`);
     setTestCases(res.data);
   }, [projectId]);
 

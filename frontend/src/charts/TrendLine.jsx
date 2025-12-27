@@ -23,7 +23,7 @@ export default function TrendLine() {
     const fetchTrend = async () => {
       try {
         const res = await api.get(
-          `/analytics/trend?projectId=${projectId}`
+          `/api/analytics/trend?projectId=${projectId}`
         );
         setData(res.data);
       } catch (err) {

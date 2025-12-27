@@ -11,7 +11,7 @@ export default function StatusPie() {
     if (!projectId) return;
 
     api
-      .get(`/analytics/summary?projectId=${projectId}`)
+      .get(`/api/analytics/summary?projectId=${projectId}`)
       .then(res => setStats(res.data))
       .catch(() => setStats([]));
   }, [projectId]);

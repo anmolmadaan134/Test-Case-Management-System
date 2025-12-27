@@ -16,7 +16,7 @@ export default function Projects() {
 
   const fetchProjects = useCallback(async () => {
     try {
-      const res = await api.get("/projects");
+      const res = await api.get("/api/projects");
       setProjects(res.data);
     } catch (err) {
       console.error("Failed to load projects", err);
