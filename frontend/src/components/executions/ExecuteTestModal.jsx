@@ -9,7 +9,7 @@ export default function ExecuteTestModal({ testCase, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await api.post("/executions", {
+    await api.post("/api/executions", {
       test_case_id: testCase.id,
       projectId,
       status,
