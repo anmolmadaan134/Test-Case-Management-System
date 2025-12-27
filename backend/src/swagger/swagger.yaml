@@ -1,0 +1,167 @@
+openapi: 3.0.0
+
+info:
+  title: Test Case Management System API
+  description: API documentation for Test Case Management backend
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:5000/api
+    description: Local server
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - BearerAuth: []
+
+tags:
+  - name: Auth
+  - name: Projects
+  - name: TestCases
+  - name: Executions
+  - name: Analytics
+
+paths:
+
+  /auth/login:
+    post:
+      tags: [Auth]
+      summary: Login user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                  example: tester@test.com
+                password:
+                  type: string
+                  example: test123
+      responses:
+        200:
+          description: Login successful
+        401:
+          description: Invalid credentials
+
+  /projects:
+    get:
+      tags: [Projects]
+      summary: Get all projects
+      responses:
+        200:
+          description: Project list
+
+    post:
+      tags: [Projects]
+      summary: Create project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, version, status]
+              properties:
+                name:
+                  type: string
+                  example: Web App
+                description:
+                  type: string
+                version:
+                  type: string
+                  example: v1.0
+                status:
+                  type: string
+                  example: Active
+      responses:
+        201:
+          description: Project created
+        403:
+          description: Forbidden
+
+  /testcases:
+    get:
+      tags: [TestCases]
+      summary: Get all test cases
+      responses:
+        200:
+          description: Test cases list
+
+    post:
+      tags: [TestCases]
+      summary: Create test case
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [title, priority, type]
+              properties:
+                title:
+                  type: string
+                  example: Login validation
+                description:
+                  type: string
+                priority:
+                  type: string
+                  example: High
+                type:
+                  type: string
+                  example: Functional
+      responses:
+        201:
+          description: Test case created
+        403:
+          description: Forbidden
+
+  /executions:
+    get:
+      tags: [Executions]
+      summary: Get test executions
+      responses:
+        200:
+          description: Execution list
+
+    post:
+      tags: [Executions]
+      summary: Execute test case
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [test_case_id, status]
+              properties:
+                test_case_id:
+                  type: integer
+                  example: 1
+                status:
+                  type: string
+                  example: Fail
+                comments:
+                  type: string
+                  example: Button not clickable
+      responses:
+        201:
+          description: Execution recorded
+        403:
+          description: Forbidden
+
+  /analytics:
+    get:
+      tags: [Analytics]
+      summary: Get analytics summary
+      responses:
+        200:
+          description: Analytics data
