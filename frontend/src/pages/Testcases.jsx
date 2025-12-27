@@ -24,39 +24,36 @@ export default function TestCases() {
     return <div>Select a project first.</div>;
   }
 
-  const handleExport = () => {
+  const handleExport = async() => {
   if (!projectId) {
     alert("Select a project first");
     return;
   }
 
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
 
-  fetch(
-    `http://localhost:5000/api/testcases/export?projectId=${projectId}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  )
-    .then((res) => {
-      if (!res.ok) throw new Error("Export failed");
-      return res.blob();
-    })
-    .then((blob) => {
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `testcases_project_${projectId}.csv`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    })
-    .catch((err) => {
-      console.error(err);
-      alert("Failed to export CSV");
-    });
+  
+  try {
+    const res = await api.get(
+      `/api/testcases/export?projectId=${projectId}`,
+      {
+        responseType: "blob", // IMPORTANT for file download
+      }
+    );
+
+    const url = window.URL.createObjectURL(new Blob([res.data]));
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `testcases_project_${projectId}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    window.URL.revokeObjectURL(url);
+
+  } catch (err) {
+    console.error("Export failed:", err);
+    alert("Failed to export CSV");
+  }
 };
 
   return (

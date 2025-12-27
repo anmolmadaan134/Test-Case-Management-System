@@ -14,7 +14,7 @@ export default function CreateTestCaseModal({ projectId, onClose, onCreated }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await api.post("/testcases", {
+    await api.post("/api/testcases", {
       ...form,
       projectId,
     });
