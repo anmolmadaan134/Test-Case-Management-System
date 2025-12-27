@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import api from "../services/api";
-import { useAuth } from "../context/Authcontext";
+import { useAuth } from "../context/AuthContext";
 import CreateTestCaseModal from "../components/testcases/CreateTestCaseModal";
 
 export default function TestCases() {

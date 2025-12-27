@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import api from "../services/api";
-import { useAuth } from "../context/Authcontext";
+import { useAuth } from "../context/AuthContext";
 import ExecuteTestModal from "../components/executions/ExecuteTestModal";
 
 export default function Executions() {
