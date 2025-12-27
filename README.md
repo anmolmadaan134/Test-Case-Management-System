@@ -23,6 +23,28 @@ The system is designed with **scalability, correctness, and real-world workflows
 
 ---
 
+## 🔐 Demo Credentials (For Interview / Evaluation)
+
+The application is preconfigured with **demo users** for evaluation purposes.
+
+You can log in using **any one** of the following accounts:
+
+```
+Email: admin@test.com
+Password: test123
+```
+
+```
+Email: lead@test.com
+Password: test123
+```
+
+> ⚠️ These credentials are **for demo and interview purposes only**.  
+> In a real production environment, user registration and secure password policies would be enforced.
+
+---
+
+
 ## 🏗️ Tech Stack
 
 ### Frontend
